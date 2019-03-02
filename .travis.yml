@@ -1,0 +1,29 @@
+language: python
+
+services:
+  - docker
+
+matrix:
+  include:
+    - python: 3.6
+    - python: 3.7
+      dist: xenial
+      sudo: true
+
+
+# command to install dependencies
+before_install:
+  - pip install -U pip wheel
+  - pip install -r requirements.txt
+  - pip install codecov
+
+install:
+  - pip install .
+  
+# command to run tests
+script:
+  - pytest
+  - codecov
+  
+before_deploy:
+  - cd $TRAVIS_BUILD_DIR
