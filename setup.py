@@ -31,8 +31,7 @@ def find_version(file):
 
 
 readme = read_file(os.path.join(os.path.dirname(__file__), "README.md"))
-license = read_file(os.path.join(os.path.split(os.path.dirname(__file__))[0],
-                                 "LICENSE"))
+license = read_file(os.path.join(os.path.dirname(__file__), "LICENSE"))
 cycle_gan_version = find_version(os.path.join(os.path.dirname(__file__),
                                               "cycle_gan",
                                               "__init__.py"))
