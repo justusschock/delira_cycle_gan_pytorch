@@ -15,7 +15,7 @@ class CycleLoss(torch.nn.Module):
         ----------
         loss_fn : optional
             the actual loss function to compute a pixelwise loss
-            (the default is torch.nn.L1Loss())
+            (the default is :class:`torch.nn.L1Loss`())
 
         """
 
@@ -29,18 +29,18 @@ class CycleLoss(torch.nn.Module):
 
         Parameters
         ----------
-        target_a : torch.Tensor
+        target_a : :class:`torch.Tensor`
             the target image of domain A
-        target_b : torch.Tensor
+        target_b : :class:`torch.Tensor`
             the target image of domain B
-        rec_a : torch.Tensor
+        rec_a : :class:`torch.Tensor`
             the reconstructed image of domain A
-        rec_b : torch.Tensor
+        rec_b : :class:`torch.Tensor`
             the reconstructed image of domain B
 
         Returns
         -------
-        torch.Tensor
+        :class:`torch.Tensor`
             the loss value
 
         """
@@ -62,7 +62,7 @@ class AdversarialLoss(torch.nn.Module):
         ----------
         loss_fn : optional
             the actual loss function computing the losses 
-            (the default is torch.nn.BCELoss())
+            (the default is :class:`torch.nn.BCELoss`())
 
         """
 
@@ -75,14 +75,14 @@ class AdversarialLoss(torch.nn.Module):
 
         Parameters
         ----------
-        fake_a_cls : torch.Tensor
+        fake_a_cls : :class:`torch.Tensor`
             classification result of the fake image in domain A
-        fake_b_cls : torch.Tensor
+        fake_b_cls : :class:`torch.Tensor`
             classification result of the fake image in domain B
 
         Returns
         -------
-        torch.Tensor
+        :class:`torch.Tensor`
             the loss value
         """
 
@@ -104,7 +104,7 @@ class DiscriminatorLoss(torch.nn.Module):
         ----------
         loss_fn : optional
             the actual loss function computing the losses 
-            (the default is torch.nn.BCELoss())
+            (the default is :class:`torch.nn.BCELoss`())
 
         """
         super().__init__()
@@ -116,14 +116,14 @@ class DiscriminatorLoss(torch.nn.Module):
 
         Parameters
         ----------
-        real_cl : torch.Tensor
+        real_cl : :class:`torch.Tensor`
             classification result of the real image
-        fake_cl : torch.Tensor
+        fake_cl : :class:`torch.Tensor`
             classification result of the fake image
 
         Returns
         -------
-        torch.Tensor
+        :class:`torch.Tensor`
             the loss value
         """
         return self._loss_fn(real_cl, torch.ones_like(real_cl)) \

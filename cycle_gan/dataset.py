@@ -37,12 +37,12 @@ class ImagePool:
 
         Parameters
         ----------
-        image : numpy.ndarray
+        image : :class:`numpy.ndarray`
             the image to be pushed to the pool
 
         Returns
         -------
-        numpy.ndarray
+        :class:`numpy.ndarray`
             the returned image (either a randomly selected one of the pool or
             the given image)
 
@@ -109,6 +109,10 @@ class UnPairedDataset(AbstractDataset):
             function to load a single sample (the default is 
             ``default_load_fn_2d``)
 
+        See Also
+        --------
+        :class:`delira.data_loading.dataset.AbstractDataset`
+
         """
 
         super().__init__((img_path_a, img_path_b), load_fn, img_extensions,
@@ -170,7 +174,7 @@ class UnPairedDataset(AbstractDataset):
         -------
         dict
             A dict with keys "domain_a" and "domain_b" containing unpaired 
-            images as numpy arrays
+            images as :class:`numpy.ndarray`
 
         """
 

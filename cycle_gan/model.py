@@ -12,27 +12,37 @@ class CycleGAN(AbstractPyTorchNetwork):
 
     The image domains in this implementation are called A and B.
     The suffix of each tensor indicates the corresponding image domain (e.g.
-    x_a lies within domain A, while x_b lies within domain B) and the suffix of
-    each module indicates the domain it works on (e.g. net_a works on images of
-    domain A).
+    ``x_a`` lies within domain A, while ``x_b`` lies within domain B) and the 
+    suffix of each module indicates the domain it works on (e.g. ``net_a`` 
+    works on images of domain A).
 
     Performs predictions and has ``closure`` method to provide the basic
     behavior during training.
 
     Performs the following operations during prediction:
 
-        fake_B = G_A(I_A)
-        fake_A = G_B(I_B)
-        rec_A = G_B(G_A(I_A))
-        rec_B = G_A(G_B(I_B))
+        .. math::
+
+            fake_B = G_A(I_A)
+
+            fake_A = G_B(I_B)
+
+            rec_A = G_B(G_A(I_A))
+
+            rec_B = G_A(G_B(I_B))
 
     and the classification results are additionally send through the
     discriminator:
 
-        fake_A_CL = D_A(G_B(I_B))
-        fake_B_CL = D_B(G_A(I_A))
-        real_A_CL = D_A(I_A)
-        real_B_CL = D_B(I_B)
+        .. math::
+
+            fake_{A,CL} = D_A(G_B(I_B))
+
+            fake_{B,CL} = D_B(G_A(I_A))
+
+            real_{A,CL} = D_A(I_A)
+
+            real_{B,CL} = D_B(I_B)
 
     During Training a cyclic loss is computed between rec_A and I_A and
     rec_b and I_B since the reconstructed images must equal the original ones.
@@ -126,15 +136,23 @@ class CycleGAN(AbstractPyTorchNetwork):
         """
         Performs all relevant predictions:
 
-        fake_B = G_A(I_A)
-        fake_A = G_B(I_B)
-        rec_A = G_B(G_A(I_A))
-        rec_B = G_A(G_B(I_B))
+            .. math::
 
-        fake_A_CL = D_A(G_B(I_B))
-        fake_B_CL = D_B(G_A(I_A))
-        real_A_CL = D_A(I_A)
-        real_B_CL = D_B(I_B)
+                fake_B = G_A(I_A)
+
+                fake_A = G_B(I_B)
+
+                rec_A = G_B(G_A(I_A))
+
+                rec_B = G_A(G_B(I_B))
+
+                fake_{A,CL} = D_A(G_B(I_B))
+
+                fake_{B,CL} = D_B(G_A(I_A))
+
+                real_{A,CL} = D_A(I_A)
+
+                real_{B,CL} = D_B(I_B)
 
         Parameters
         ----------

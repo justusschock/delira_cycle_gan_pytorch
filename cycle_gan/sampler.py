@@ -4,7 +4,8 @@ from delira.data_loading.sampler import AbstractSampler, RandomSampler
 class UnPairedRandomSampler(AbstractSampler):
     """
     Sampler to return two randomly sampled indices (one for each subset).
-    Internally holds a single :class:`RandomSampler` per subset
+    Internally holds a single 
+    :class:`delira.data_loading.sampler.random_sampler.RandomSampler` per subset
 
     """
 

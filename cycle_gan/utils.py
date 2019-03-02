@@ -10,7 +10,7 @@ def create_optimizers_cycle_gan(model: CycleGAN, optim_cls: dict,
 
     Parameters
     ----------
-    model : CycleGAN
+    model : :class:`CycleGAN`
         the model, whose parameters should be optimized
     optim_cls : dict
         dictionary containing the classes to create optimizers for the 
