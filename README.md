@@ -4,7 +4,7 @@ This package contains a [`delira`](https://github.com/justusschock/delira)
 compatible cycle GAN skeleton, which should work for arbitrary dimensions and
  datatypes.
  
- An example for 2D and 3D images can be found in the [notebooks](notebooks) 
+ An example for 2D images can be found in the [notebooks](notebooks) 
  folder.
  
  The paper, this package is based on, can be found at [arXiv](https://arxiv.org/abs/1703.10593).
