@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cycle_gan.dataset &mdash; delira-compatible cycle GAN PyTorch 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> delira-compatible cycle GAN PyTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../2d_example.html">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api/_build/modules.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../_api/_build/cycle_gan/cycle_gan.html">Cycle GAN PyTorch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_api/_build/cycle_gan/model.html">Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/model.html#cyclegan"><span class="hidden-section">CycleGAN</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_api/_build/cycle_gan/dataset.html">Dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/dataset.html#unpaireddataset"><span class="hidden-section">UnPairedDataset</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/dataset.html#imagepool"><span class="hidden-section">ImagePool</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_api/_build/cycle_gan/losses.html">Losses</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/losses.html#cycleloss"><span class="hidden-section">CycleLoss</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/losses.html#adversarialloss"><span class="hidden-section">AdversarialLoss</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/losses.html#discriminatorloss"><span class="hidden-section">DiscriminatorLoss</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_api/_build/cycle_gan/sampler.html">Sampler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/sampler.html#unpairedrandomsampler"><span class="hidden-section">UnPairedRandomSampler</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_api/_build/cycle_gan/utils.html">Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/utils.html#create-optimizers-cycle-gan"><span class="hidden-section">create_optimizers_cycle_gan</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/justusschock/delira_cycle_gan_pytorch">GitHub</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">delira-compatible cycle GAN PyTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>cycle_gan.dataset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for cycle_gan.dataset</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">delira.data_loading</span> <span class="k">import</span> <span class="n">AbstractDataset</span>
+<span class="kn">from</span> <span class="nn">delira.data_loading.load_utils</span> <span class="k">import</span> <span class="n">default_load_fn_2d</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<div class="viewcode-block" id="ImagePool"><a class="viewcode-back" href="../../_api/_build/cycle_gan/dataset.html#cycle_gan.dataset.ImagePool">[docs]</a><span class="k">class</span> <span class="nc">ImagePool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to buffer images on CPU to avoid huge memory overload enable the model</span>
+<span class="sd">    to revisit already seen images. This should prevent them to be forgotten</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">poolsize</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        poolsize : int, optional</span>
+<span class="sd">            the size of the image pool (the default is 50),</span>
+<span class="sd">        p : float, optional</span>
+<span class="sd">            the probability with which an image of the pool should be returned</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span> <span class="o">=</span> <span class="n">poolsize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prob</span> <span class="o">=</span> <span class="n">p</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_imgs</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        With a given probability pushes and image to the pool and pops another</span>
+<span class="sd">        randomly selected image</span>
+<span class="sd">        With (1 - given probability) returns the given image</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        image : :class:`numpy.ndarray`</span>
+<span class="sd">            the image to be pushed to the pool</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`numpy.ndarray`</span>
+<span class="sd">            the returned image (either a randomly selected one of the pool or</span>
+<span class="sd">            the given image)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">image</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_imgs</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_imgs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_imgs</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">image</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">prob</span><span class="p">:</span>
+                <span class="c1"># replace random image in</span>
+                <span class="c1"># self.images with currently considered image</span>
+                <span class="c1"># and return replaced image</span>
+                <span class="n">random_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">random_id</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">random_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">image</span>
+                <span class="k">return</span> <span class="n">tmp</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># return currently considered image</span>
+                <span class="k">return</span> <span class="n">image</span></div>
+
+
+<div class="viewcode-block" id="UnPairedDataset"><a class="viewcode-back" href="../../_api/_build/cycle_gan/dataset.html#cycle_gan.dataset.UnPairedDataset">[docs]</a><span class="k">class</span> <span class="nc">UnPairedDataset</span><span class="p">(</span><span class="n">AbstractDataset</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dataset to whold 2 unpaired datasets and returning samples from both of </span>
+<span class="sd">    them.</span>
+
+<span class="sd">    Contains an Image pool for each dataset.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :class:`UnPairedRandomSampler`</span>
+<span class="sd">    :class:`ImagePool`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path_a</span><span class="p">,</span> <span class="n">img_path_b</span><span class="p">,</span> <span class="n">pool_size</span><span class="p">,</span> <span class="n">pool_prob</span><span class="p">,</span> <span class="n">img_size</span><span class="p">,</span>
+                 <span class="n">n_channels</span><span class="p">,</span> <span class="n">img_extensions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;.png&quot;</span><span class="p">,</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">],</span>
+                 <span class="n">load_fn</span><span class="o">=</span><span class="n">default_load_fn_2d</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        img_path_a : str</span>
+<span class="sd">            the directory path containing the data for image domain A</span>
+<span class="sd">        img_path_b : str</span>
+<span class="sd">            the directory path containing the data for image domain B</span>
+<span class="sd">        pool_size : int</span>
+<span class="sd">            the size for both image pools</span>
+<span class="sd">        pool_prob : float</span>
+<span class="sd">            the sampling probability for both image pools</span>
+<span class="sd">        img_size : int</span>
+<span class="sd">            the size of the input image</span>
+<span class="sd">        n_channels : int</span>
+<span class="sd">            the number of image channels</span>
+<span class="sd">        img_extensions : list, optional</span>
+<span class="sd">            valid file extensions for images (the default is [&quot;.png&quot;, &quot;.jpg&quot;])</span>
+<span class="sd">        load_fn : optional</span>
+<span class="sd">            function to load a single sample (the default is </span>
+<span class="sd">            ``default_load_fn_2d``)</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        :class:`delira.data_loading.dataset.AbstractDataset`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">((</span><span class="n">img_path_a</span><span class="p">,</span> <span class="n">img_path_b</span><span class="p">),</span> <span class="n">load_fn</span><span class="p">,</span> <span class="n">img_extensions</span><span class="p">,</span>
+                         <span class="kc">None</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">img_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">img_size</span><span class="p">,</span> <span class="n">img_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_channels</span> <span class="o">=</span> <span class="n">n_channels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool_a</span> <span class="o">=</span> <span class="n">ImagePool</span><span class="p">(</span><span class="n">pool_size</span><span class="p">,</span> <span class="n">pool_prob</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool_b</span> <span class="o">=</span> <span class="n">ImagePool</span><span class="p">(</span><span class="n">pool_size</span><span class="p">,</span> <span class="n">pool_prob</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">_get_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">extensions</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                <span class="n">abs_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">any</span><span class="p">([</span><span class="n">abs_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">_ext</span><span class="p">)</span> <span class="k">for</span> <span class="n">_ext</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">])</span>
+                        <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">abs_file</span><span class="p">)):</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">abs_file</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">data</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_get_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_path</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_img_extensions</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_get_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_path</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_img_extensions</span><span class="p">))</span>
+
+<div class="viewcode-block" id="UnPairedDataset.get_sample_from_index"><a class="viewcode-back" href="../../_api/_build/cycle_gan/dataset.html#cycle_gan.dataset.UnPairedDataset.get_sample_from_index">[docs]</a>    <span class="k">def</span> <span class="nf">get_sample_from_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the actual data given from an index</span>
+<span class="sd">        Since this dataset contains two unpaired datasets, the index should be</span>
+<span class="sd">        a tuple of ints containing the actual indices</span>
+
+<span class="sd">        If the index is out of bounds for the corresponding datasets it </span>
+<span class="sd">        restarts at 0</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        index : tuple</span>
+<span class="sd">            a tuple of ints containing the actual indices</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            the samples from both dataset as specified by ``index``</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">_index</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
+                     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">index</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a sample from a given index.</span>
+<span class="sd">        Since we have the dataset consists of 2 unpaired datasets, the index</span>
+<span class="sd">        should actually be a tuple of 2 indices</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        index : tuple</span>
+<span class="sd">            a tuple of ints containing the actual indices</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            A dict with keys &quot;domain_a&quot; and &quot;domain_b&quot; containing unpaired </span>
+<span class="sd">            images as :class:`numpy.ndarray`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_sample_from_index</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+        <span class="n">domain_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_fn</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img_shape</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">img_shape</span><span class="p">,</span>
+                                 <span class="n">n_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_channels</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+
+        <span class="n">domain_b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_fn</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">img_shape</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">img_shape</span><span class="p">,</span>
+                                 <span class="n">n_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_channels</span><span class="p">)[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;domain_a&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_a</span><span class="p">(</span><span class="n">domain_a</span><span class="p">),</span>
+                <span class="s2">&quot;domain_b&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_b</span><span class="p">(</span><span class="n">domain_b</span><span class="p">)}</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the length of the whole dataset as the maximum of the </span>
+<span class="sd">        subdatasets&#39; lengths</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        int</span>
+<span class="sd">            the dataset length</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">_data</span><span class="p">)</span> <span class="k">for</span> <span class="n">_data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">])</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Justus Schock
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cycle GAN with `delira &lt;https://github.com/justusschock/delira&gt;`__ &mdash; delira-compatible cycle GAN PyTorch 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Documentation" href="_api/_build/modules.html" />
+    <link rel="prev" title="Welcome to delira-compatible cycle-GAN’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> delira-compatible cycle GAN PyTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api/_build/modules.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_api/_build/cycle_gan/cycle_gan.html">Cycle GAN PyTorch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_api/_build/cycle_gan/model.html">Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_api/_build/cycle_gan/model.html#cyclegan"><span class="hidden-section">CycleGAN</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_api/_build/cycle_gan/dataset.html">Dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_api/_build/cycle_gan/dataset.html#unpaireddataset"><span class="hidden-section">UnPairedDataset</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="_api/_build/cycle_gan/dataset.html#imagepool"><span class="hidden-section">ImagePool</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_api/_build/cycle_gan/losses.html">Losses</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_api/_build/cycle_gan/losses.html#cycleloss"><span class="hidden-section">CycleLoss</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="_api/_build/cycle_gan/losses.html#adversarialloss"><span class="hidden-section">AdversarialLoss</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="_api/_build/cycle_gan/losses.html#discriminatorloss"><span class="hidden-section">DiscriminatorLoss</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_api/_build/cycle_gan/sampler.html">Sampler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_api/_build/cycle_gan/sampler.html#unpairedrandomsampler"><span class="hidden-section">UnPairedRandomSampler</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="_api/_build/cycle_gan/utils.html">Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="_api/_build/cycle_gan/utils.html#create-optimizers-cycle-gan"><span class="hidden-section">create_optimizers_cycle_gan</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/justusschock/delira_cycle_gan_pytorch">GitHub</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">delira-compatible cycle GAN PyTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Cycle GAN with <code class="docutils literal notranslate"><span class="pre">`delira</span></code> &lt;https://github.com/justusschock/delira&gt;`__</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/2d_example.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cycle-gan-with-delira-https-github-com-justusschock-delira">
+<h1>Cycle GAN with <code class="docutils literal notranslate"><span class="pre">`delira</span></code> &lt;<a class="reference external" href="https://github.com/justusschock/delira">https://github.com/justusschock/delira</a>&gt;`__<a class="headerlink" href="#cycle-gan-with-delira-https-github-com-justusschock-delira" title="Permalink to this headline">¶</a></h1>
+<p>The following example shows the basic usage of the provided cycle-gan
+implementation with <code class="docutils literal notranslate"><span class="pre">delira</span></code></p>
+<p>First we need to download our data. For training, we use the official
+data and a script thankfully provided by <a class="reference external" href="https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix">the original
+implementation</a>.</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span>!bash download_cyclegan_dataset.sh
+</pre></div>
+</div>
+<p>Next we need to import the package, providing the actual cycle GAN
+implementation and the necessary helper functions and classes:</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cycle_gan</span>
+</pre></div>
+</div>
+<p>This package is based on
+<code class="docutils literal notranslate"><span class="pre">`delira</span></code> &lt;<a class="reference external" href="https://github.com/justusschock/delira">https://github.com/justusschock/delira</a>&gt;`__ and uses it, to
+provide a basic data-loading structure and training routine. The
+following creates a training and a testing dataset from the downloaded
+images.</p>
+<blockquote>
+<div><strong>Note</strong>: The Dataset classes come from this package, while the data
+manager class lives within <code class="docutils literal notranslate"><span class="pre">delira</span></code></div></blockquote>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">delira.data_loading</span> <span class="k">import</span> <span class="n">BaseDataManager</span>
+
+<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">dset_train</span> <span class="o">=</span> <span class="n">cycle_gan</span><span class="o">.</span><span class="n">UnPairedDataset</span><span class="p">(</span><span class="s2">&quot;./datasets/vangogh2photo/trainA&quot;</span><span class="p">,</span>
+                                       <span class="s2">&quot;./datasets/vangogh2photo/trainB&quot;</span><span class="p">,</span>
+                                       <span class="n">pool_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                                       <span class="n">pool_prob</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                                       <span class="n">img_size</span><span class="o">=</span><span class="mi">224</span><span class="p">,</span>
+                                       <span class="n">n_channels</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">dset_test</span> <span class="o">=</span> <span class="n">cycle_gan</span><span class="o">.</span><span class="n">UnPairedDataset</span><span class="p">(</span><span class="s2">&quot;./datasets/vangogh2photo/testA&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;./datasets/vangogh2photo/testB&quot;</span><span class="p">,</span>
+                                      <span class="n">pool_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                                      <span class="n">pool_prob</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                                      <span class="n">img_size</span><span class="o">=</span><span class="mi">224</span><span class="p">,</span>
+                                      <span class="n">n_channels</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">man_train</span> <span class="o">=</span> <span class="n">BaseDataManager</span><span class="p">(</span><span class="n">dset_train</span><span class="p">,</span>
+                            <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span>
+                            <span class="n">n_process_augmentation</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                            <span class="n">transforms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                            <span class="n">sampler_cls</span><span class="o">=</span><span class="n">cycle_gan</span><span class="o">.</span><span class="n">UnPairedRandomSampler</span><span class="p">)</span>
+<span class="n">man_test</span> <span class="o">=</span> <span class="n">BaseDataManager</span><span class="p">(</span><span class="n">dset_test</span><span class="p">,</span>
+                           <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span>
+                           <span class="n">n_process_augmentation</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                           <span class="n">transforms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">sampler_cls</span><span class="o">=</span><span class="n">cycle_gan</span><span class="o">.</span><span class="n">UnPairedRandomSampler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since the cycle GAN is a special type of generative adversarial network,
+it also needs a discriminator.</p>
+<p>We define our (very simple) discriminator without any fancy stuff as:</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="k">class</span> <span class="nc">Conv2dRelu</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Block holding one Conv2d and one ReLU layer</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        *args :</span>
+<span class="sd">            positional arguments (passed to Conv2d)</span>
+<span class="sd">        **kwargs :</span>
+<span class="sd">            keyword arguments (passed to Conv2d)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_relu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_batch</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Forward batch though layers</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        input_batch : :class:`torch.Tensor`</span>
+<span class="sd">            input batch</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`torch.Tensor`</span>
+<span class="sd">            result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_conv</span><span class="p">(</span><span class="n">input_batch</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">Discriminator</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_model</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">InstanceNorm2d</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigm</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_tensor</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_build_model</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">,</span> <span class="n">norm_class</span><span class="p">,</span> <span class="n">p_dropout</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build the actual model structure</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        in_channels : int</span>
+<span class="sd">            number of input channels</span>
+<span class="sd">        out_params : int</span>
+<span class="sd">            number of outputs</span>
+<span class="sd">        norm_class : Any</span>
+<span class="sd">            class implementing a normalization</span>
+<span class="sd">        p_dropout : float</span>
+<span class="sd">            dropout probability</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`torch.nn.Module`</span>
+<span class="sd">            ensembled model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_1&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_2&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;down_conv_1&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">norm_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;norm_1&quot;</span><span class="p">,</span> <span class="n">norm_class</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">p_dropout</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;dropout_1&quot;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout2d</span><span class="p">(</span><span class="n">p_dropout</span><span class="p">))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_3&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_4&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;down_conv_2&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">norm_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;norm_2&quot;</span><span class="p">,</span> <span class="n">norm_class</span><span class="p">(</span><span class="mi">256</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">p_dropout</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;dropout_2&quot;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout2d</span><span class="p">(</span><span class="n">p_dropout</span><span class="p">))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_5&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_6&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;down_conv_3&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">norm_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;norm_3&quot;</span><span class="p">,</span> <span class="n">norm_class</span><span class="p">(</span><span class="mi">256</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">p_dropout</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;dropout_3&quot;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout2d</span><span class="p">(</span><span class="n">p_dropout</span><span class="p">))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_7&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_8&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;down_conv_4&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">norm_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;norm_4&quot;</span><span class="p">,</span> <span class="n">norm_class</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">p_dropout</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;dropout_4&quot;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout2d</span><span class="p">(</span><span class="n">p_dropout</span><span class="p">))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_9&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_10&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_11&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;conv_12&quot;</span><span class="p">,</span> <span class="n">Conv2dRelu</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;final_conv&quot;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">,</span>
+                                                       <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+<p>Now, that we have defined a discriminator for images of size 224x224
+pixels, we need to take care of our generator models. For simplicity, we
+don’t define them by ourself, but use an already available U-Net in this
+example (<code class="docutils literal notranslate"><span class="pre">UNet2dPyTorch</span></code>).</p>
+<p>Now we need to define our training and model arguments using the
+<code class="docutils literal notranslate"><span class="pre">Parameters</span></code> class from <code class="docutils literal notranslate"><span class="pre">delira</span></code>:</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">delira.training</span> <span class="k">import</span> <span class="n">Parameters</span>
+<span class="kn">from</span> <span class="nn">delira.models.segmentation</span> <span class="k">import</span> <span class="n">UNet2dPyTorch</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="n">Parameters</span><span class="p">(</span>
+    <span class="n">fixed_params</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;training&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;num_epochs&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;losses&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;discr&quot;</span><span class="p">:</span> <span class="n">cycle_gan</span><span class="o">.</span><span class="n">DiscriminatorLoss</span><span class="p">(),</span>
+                <span class="s2">&quot;adv&quot;</span><span class="p">:</span> <span class="n">cycle_gan</span><span class="o">.</span><span class="n">AdversarialLoss</span><span class="p">(),</span>
+                <span class="s2">&quot;cycle&quot;</span><span class="p">:</span> <span class="n">cycle_gan</span><span class="o">.</span><span class="n">CycleLoss</span><span class="p">()</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;optimizer_cls&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;gen&quot;</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">,</span>
+                <span class="s2">&quot;discr&quot;</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;optimizer_params&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;discr&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;lr&quot;</span><span class="p">:</span> <span class="mf">1e-3</span><span class="p">},</span>
+                <span class="s2">&quot;gen&quot;</span><span class="p">:</span> <span class="p">{}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;model&quot;</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;generator_cls&quot;</span><span class="p">:</span> <span class="n">UNet2dPyTorch</span><span class="p">,</span>
+            <span class="s2">&quot;gen_kwargs&quot;</span><span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;domain_a&quot;</span><span class="p">:{},</span>
+                <span class="s2">&quot;domain_b&quot;</span><span class="p">:{},</span>
+                <span class="s2">&quot;shared&quot;</span><span class="p">:{</span><span class="s2">&quot;in_channels&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;num_classes&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;discriminator_cls&quot;</span><span class="p">:</span> <span class="n">Discriminator</span><span class="p">,</span>
+            <span class="s2">&quot;discr_kwargs&quot;</span><span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;domain_a&quot;</span><span class="p">:{},</span>
+                <span class="s2">&quot;domain_b&quot;</span><span class="p">:{},</span>
+                <span class="s2">&quot;shared&quot;</span><span class="p">:{</span><span class="s2">&quot;in_channels&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;img_logging_freq&quot;</span><span class="p">:</span> <span class="mi">100</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally! Now, we can start our training using the <code class="docutils literal notranslate"><span class="pre">PyTorchExperiment</span></code>.</p>
+<p>We just do a few minor specifications here:</p>
+<ul class="simple">
+<li>set the usable GPUs to the first available GPU if any GPUs have been
+detected (else specify the usable GPUs to be empty, which causes a
+training on CPU)</li>
+<li>use the <code class="docutils literal notranslate"><span class="pre">create_optimizers_cycle_gan</span></code> to automatically create
+optimizers for our cycle GAN</li>
+<li>use the <code class="docutils literal notranslate"><span class="pre">CycleGAN</span></code> class as our network, which defines the training
+and prediction behavior.</li>
+</ul>
+<p>Now let’s start training!</p>
+<div class="code ipython3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">delira.training</span> <span class="k">import</span> <span class="n">PyTorchExperiment</span>
+
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">gpu_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">gpu_ids</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">exp</span> <span class="o">=</span> <span class="n">PyTorchExperiment</span><span class="p">(</span><span class="n">params</span><span class="p">,</span>
+                        <span class="n">cycle_gan</span><span class="o">.</span><span class="n">CycleGAN</span><span class="p">,</span>
+                        <span class="n">optim_builder</span><span class="o">=</span><span class="n">cycle_gan</span><span class="o">.</span><span class="n">create_optimizers_cycle_gan</span><span class="p">,</span>
+                        <span class="n">gpu_ids</span><span class="o">=</span><span class="n">gpu_ids</span><span class="p">)</span>
+<span class="n">exp</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">man_train</span><span class="p">,</span> <span class="n">man_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="_api/_build/modules.html" class="btn btn-neutral float-right" title="API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to delira-compatible cycle-GAN’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Justus Schock
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

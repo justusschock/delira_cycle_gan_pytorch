@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cycle_gan.losses &mdash; delira-compatible cycle GAN PyTorch 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> delira-compatible cycle GAN PyTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../2d_example.html">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api/_build/modules.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../_api/_build/cycle_gan/cycle_gan.html">Cycle GAN PyTorch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_api/_build/cycle_gan/model.html">Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/model.html#cyclegan"><span class="hidden-section">CycleGAN</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_api/_build/cycle_gan/dataset.html">Dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/dataset.html#unpaireddataset"><span class="hidden-section">UnPairedDataset</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/dataset.html#imagepool"><span class="hidden-section">ImagePool</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_api/_build/cycle_gan/losses.html">Losses</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/losses.html#cycleloss"><span class="hidden-section">CycleLoss</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/losses.html#adversarialloss"><span class="hidden-section">AdversarialLoss</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/losses.html#discriminatorloss"><span class="hidden-section">DiscriminatorLoss</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_api/_build/cycle_gan/sampler.html">Sampler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/sampler.html#unpairedrandomsampler"><span class="hidden-section">UnPairedRandomSampler</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../_api/_build/cycle_gan/utils.html">Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../_api/_build/cycle_gan/utils.html#create-optimizers-cycle-gan"><span class="hidden-section">create_optimizers_cycle_gan</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/justusschock/delira_cycle_gan_pytorch">GitHub</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">delira-compatible cycle GAN PyTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>cycle_gan.losses</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for cycle_gan.losses</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+
+<div class="viewcode-block" id="CycleLoss"><a class="viewcode-back" href="../../_api/_build/cycle_gan/losses.html#cycle_gan.losses.CycleLoss">[docs]</a><span class="k">class</span> <span class="nc">CycleLoss</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes a cyclic loss between the original and reconstructed  images of </span>
+<span class="sd">    each domain</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loss_fn</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">L1Loss</span><span class="p">()):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        loss_fn : optional</span>
+<span class="sd">            the actual loss function to compute a pixelwise loss</span>
+<span class="sd">            (the default is :class:`torch.nn.L1Loss`())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loss_fn</span> <span class="o">=</span> <span class="n">loss_fn</span>
+
+<div class="viewcode-block" id="CycleLoss.forward"><a class="viewcode-back" href="../../_api/_build/cycle_gan/losses.html#cycle_gan.losses.CycleLoss.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_a</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">target_b</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                <span class="n">rec_a</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">rec_b</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the actual loss</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        target_a : :class:`torch.Tensor`</span>
+<span class="sd">            the target image of domain A</span>
+<span class="sd">        target_b : :class:`torch.Tensor`</span>
+<span class="sd">            the target image of domain B</span>
+<span class="sd">        rec_a : :class:`torch.Tensor`</span>
+<span class="sd">            the reconstructed image of domain A</span>
+<span class="sd">        rec_b : :class:`torch.Tensor`</span>
+<span class="sd">            the reconstructed image of domain B</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`torch.Tensor`</span>
+<span class="sd">            the loss value</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loss_fn</span><span class="p">(</span><span class="n">rec_a</span><span class="p">,</span> <span class="n">target_a</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loss_fn</span><span class="p">(</span><span class="n">rec_b</span><span class="p">,</span> <span class="n">target_b</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="AdversarialLoss"><a class="viewcode-back" href="../../_api/_build/cycle_gan/losses.html#cycle_gan.losses.AdversarialLoss">[docs]</a><span class="k">class</span> <span class="nc">AdversarialLoss</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates an adversarial loss on the classification results of the fake </span>
+<span class="sd">    images of both image domains (needed to update the generators)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loss_fn</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        loss_fn : optional</span>
+<span class="sd">            the actual loss function computing the losses </span>
+<span class="sd">            (the default is :class:`torch.nn.BCELoss`())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loss_fn</span> <span class="o">=</span> <span class="n">loss_fn</span>
+
+<div class="viewcode-block" id="AdversarialLoss.forward"><a class="viewcode-back" href="../../_api/_build/cycle_gan/losses.html#cycle_gan.losses.AdversarialLoss.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fake_a_cls</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">fake_b_cls</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the actual loss</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fake_a_cls : :class:`torch.Tensor`</span>
+<span class="sd">            classification result of the fake image in domain A</span>
+<span class="sd">        fake_b_cls : :class:`torch.Tensor`</span>
+<span class="sd">            classification result of the fake image in domain B</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`torch.Tensor`</span>
+<span class="sd">            the loss value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loss_fn</span><span class="p">(</span><span class="n">fake_a_cls</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">fake_a_cls</span><span class="p">))</span> \
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loss_fn</span><span class="p">(</span><span class="n">fake_b_cls</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">fake_b_cls</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="DiscriminatorLoss"><a class="viewcode-back" href="../../_api/_build/cycle_gan/losses.html#cycle_gan.losses.DiscriminatorLoss">[docs]</a><span class="k">class</span> <span class="nc">DiscriminatorLoss</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates a classical discriminator loss </span>
+<span class="sd">    (classification whether image is real or fake)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loss_fn</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        loss_fn : optional</span>
+<span class="sd">            the actual loss function computing the losses </span>
+<span class="sd">            (the default is :class:`torch.nn.BCELoss`())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loss_fn</span> <span class="o">=</span> <span class="n">loss_fn</span>
+
+<div class="viewcode-block" id="DiscriminatorLoss.forward"><a class="viewcode-back" href="../../_api/_build/cycle_gan/losses.html#cycle_gan.losses.DiscriminatorLoss.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real_cl</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">fake_cl</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the actual loss</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        real_cl : :class:`torch.Tensor`</span>
+<span class="sd">            classification result of the real image</span>
+<span class="sd">        fake_cl : :class:`torch.Tensor`</span>
+<span class="sd">            classification result of the fake image</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`torch.Tensor`</span>
+<span class="sd">            the loss value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loss_fn</span><span class="p">(</span><span class="n">real_cl</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">real_cl</span><span class="p">))</span> \
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loss_fn</span><span class="p">(</span><span class="n">fake_cl</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">fake_cl</span><span class="p">))</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Justus Schock
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Model &mdash; delira-compatible cycle GAN PyTorch 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Dataset" href="dataset.html" />
+    <link rel="prev" title="Cycle GAN PyTorch" href="cycle_gan.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> delira-compatible cycle GAN PyTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../2d_example.html">Example</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="cycle_gan.html">Cycle GAN PyTorch</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cyclegan"><span class="hidden-section">CycleGAN</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dataset.html">Dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#unpaireddataset"><span class="hidden-section">UnPairedDataset</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#imagepool"><span class="hidden-section">ImagePool</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="losses.html">Losses</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="losses.html#cycleloss"><span class="hidden-section">CycleLoss</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="losses.html#adversarialloss"><span class="hidden-section">AdversarialLoss</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="losses.html#discriminatorloss"><span class="hidden-section">DiscriminatorLoss</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sampler.html">Sampler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sampler.html#unpairedrandomsampler"><span class="hidden-section">UnPairedRandomSampler</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#create-optimizers-cycle-gan"><span class="hidden-section">create_optimizers_cycle_gan</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/justusschock/delira_cycle_gan_pytorch">GitHub</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">delira-compatible cycle GAN PyTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../modules.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="cycle_gan.html">Cycle GAN PyTorch</a> &raquo;</li>
+        
+      <li>Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/_api/_build/cycle_gan/model.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="model">
+<h1>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cyclegan">
+<h2><span class="hidden-section">CycleGAN</span><a class="headerlink" href="#cyclegan" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cycle_gan.model.CycleGAN">
+<em class="property">class </em><code class="descname">CycleGAN</code><span class="sig-paren">(</span><em>generator_cls</em>, <em>gen_kwargs: dict</em>, <em>discriminator_cls</em>, <em>discr_kwargs: dict</em>, <em>cycle_weight=1</em>, <em>adversarial_weight=1</em>, <em>gen_update_freq=1</em>, <em>img_logging_freq=1</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/model.html#CycleGAN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.model.CycleGAN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sphinx.ext.autodoc.importer._MockObject</span></code></p>
+<p>A delira-compatible implementation of a cycle-GAN.</p>
+<p>The Cycle GAN is an unpaired image-to-image translation.</p>
+<p>The image domains in this implementation are called A and B.
+The suffix of each tensor indicates the corresponding image domain (e.g.
+<code class="docutils literal notranslate"><span class="pre">x_a</span></code> lies within domain A, while <code class="docutils literal notranslate"><span class="pre">x_b</span></code> lies within domain B) and the
+suffix of each module indicates the domain it works on (e.g. <code class="docutils literal notranslate"><span class="pre">net_a</span></code>
+works on images of domain A).</p>
+<p>Performs predictions and has <code class="docutils literal notranslate"><span class="pre">closure</span></code> method to provide the basic
+behavior during training.</p>
+<p>Performs the following operations during prediction:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}fake_B = G_A(I_A)\\fake_A = G_B(I_B)\\rec_A = G_B(G_A(I_A))\\rec_B = G_A(G_B(I_B))\end{aligned}\end{align} \]</div>
+</div></blockquote>
+<p>and the classification results are additionally send through the
+discriminator:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}fake_{A,CL} = D_A(G_B(I_B))\\fake_{B,CL} = D_B(G_A(I_A))\\real_{A,CL} = D_A(I_A)\\real_{B,CL} = D_B(I_B)\end{aligned}\end{align} \]</div>
+</div></blockquote>
+<p>During Training a cyclic loss is computed between rec_A and I_A and
+rec_b and I_B since the reconstructed images must equal the original ones.</p>
+<p>Additionally a classical adversarial loss and a loss to update the
+discriminators are calculated as usual in GANs</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>The provided <code class="docutils literal notranslate"><span class="pre">generator_cls</span></code> should produce outputs of the same size as</dt>
+<dd>it’s inputs.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>The provided <code class="docutils literal notranslate"><span class="pre">discriminator_cls</span></code> should accept inputs of the same size</dt>
+<dd>as the <code class="docutils literal notranslate"><span class="pre">generator_cls</span></code> produces and    map them down to a single
+scalar output.</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-class docutils literal notranslate"><span class="pre">CycleLoss</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AdversarialLoss</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DiscriminatorLoss</span></code></p>
+</div>
+<p class="rubric">References</p>
+<p><a class="reference external" href="https://arxiv.org/abs/1703.10593">https://arxiv.org/abs/1703.10593</a></p>
+<dl class="staticmethod">
+<dt id="cycle_gan.model.CycleGAN.closure">
+<em class="property">static </em><code class="descname">closure</code><span class="sig-paren">(</span><em>model</em>, <em>data_dict: dict</em>, <em>optimizers: dict</em>, <em>losses={}</em>, <em>metrics={}</em>, <em>fold=0</em>, <em>batch_nr=0</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/model.html#CycleGAN.closure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.model.CycleGAN.closure" title="Permalink to this definition">¶</a></dt>
+<dd><p>closure method to do a single backpropagation step
+:param model: trainable model
+:type model: <a class="reference internal" href="#cycle_gan.model.CycleGAN" title="cycle_gan.model.CycleGAN"><code class="xref py py-class docutils literal notranslate"><span class="pre">CycleGAN</span></code></a>
+:param data_dict: dictionary containing the data
+:type data_dict: dict
+:param optimizers: dictionary of optimizers to optimize model’s parameters
+:type optimizers: dict
+:param losses: dict holding the losses to calculate errors</p>
+<blockquote>
+<div>(gradients from different losses will be accumulated)</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>metrics</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – dict holding the metrics to calculate</li>
+<li><strong>fold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Current Fold in Crossvalidation (default: 0)</li>
+<li><strong>batch_nr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of batch in current epoch (starts with 0 at begin of every
+epoch; default: 0)</li>
+<li><strong>**kwargs</strong> – additional keyword arguments</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><ul class="simple">
+<li><em>dict</em> – Metric values (with same keys as input dict metrics)</li>
+<li><em>dict</em> – Loss values (with same keys as input dict losses)</li>
+<li><em>list</em> – Arbitrary number of predictions as torch.Tensor</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AssertionError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AssertionError</span></code></a> – if optimizers or losses are empty or the optimizers are not
+specified</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cycle_gan.model.CycleGAN.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_domain_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1ac710&gt;</em>, <em>input_domain_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1acf28&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/model.html#CycleGAN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.model.CycleGAN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs all relevant predictions:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}fake_B = G_A(I_A)\\fake_A = G_B(I_B)\\rec_A = G_B(G_A(I_A))\\rec_B = G_A(G_B(I_B))\\fake_{A,CL} = D_A(G_B(I_B))\\fake_{B,CL} = D_B(G_A(I_A))\\real_{A,CL} = D_A(I_A)\\real_{B,CL} = D_B(I_B)\end{aligned}\end{align} \]</div>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_domain_a</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the image batch of domain A</li>
+<li><strong>input_domain_b</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the image batch of domain B</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – the reconstructed images of domain A: G_B(G_A(I_A))</li>
+<li><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – the reconstructed images of domain B: G_A(G_B(I_B))</li>
+<li><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – the generated fake image in domain A: G_B(I_B)</li>
+<li><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – the generated fake image in domain B: G_A(I_A)</li>
+<li><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – the classification result of the real image of domain A: D_A(I_A)</li>
+<li><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – the classification result of the generated fake image in domain A:
+D_A(G_B(I_B))</li>
+<li><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – the classification result of the real image of domain B: D_B(I_B)</li>
+<li><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – the classification result of the generated fake image in domain B:
+D_B(G_A(I_A))</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cycle_gan.model.CycleGAN.lambda_adversarial">
+<code class="descname">lambda_adversarial</code><a class="headerlink" href="#cycle_gan.model.CycleGAN.lambda_adversarial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="cycle_gan.model.CycleGAN.lambda_cycle">
+<code class="descname">lambda_cycle</code><a class="headerlink" href="#cycle_gan.model.CycleGAN.lambda_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="cycle_gan.model.CycleGAN.lambda_gen_freq">
+<code class="descname">lambda_gen_freq</code><a class="headerlink" href="#cycle_gan.model.CycleGAN.lambda_gen_freq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="cycle_gan.model.CycleGAN.lambda_img_logging_freq">
+<code class="descname">lambda_img_logging_freq</code><a class="headerlink" href="#cycle_gan.model.CycleGAN.lambda_img_logging_freq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="cycle_gan.model.CycleGAN.prepare_batch">
+<em class="property">static </em><code class="descname">prepare_batch</code><span class="sig-paren">(</span><em>batch_dict: dict, input_device: Union[&lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1aca20&gt;, str], output_device: Union[&lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1ad8d0&gt;, str]</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/model.html#CycleGAN.prepare_batch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.model.CycleGAN.prepare_batch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pushes the necessary batch inputs to the correct device</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>batch_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – the dict containing all batch elements</li>
+<li><strong>input_device</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">torch.device</span></code> or str) – the device for al network inputs</li>
+<li><strong>output_device</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">torch.device</span></code> or str) – the device for al network outputs</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dictionary with all elements on correct devices and with correct
+dtype; contains the following keys:
+[‘input_a’, ‘input_b’, ‘target_a’, ‘target_b’]</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dataset.html" class="btn btn-neutral float-right" title="Dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cycle_gan.html" class="btn btn-neutral float-left" title="Cycle GAN PyTorch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Justus Schock
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

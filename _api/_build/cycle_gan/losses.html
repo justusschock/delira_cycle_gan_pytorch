@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Losses &mdash; delira-compatible cycle GAN PyTorch 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Sampler" href="sampler.html" />
+    <link rel="prev" title="Dataset" href="dataset.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> delira-compatible cycle GAN PyTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../2d_example.html">Example</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="cycle_gan.html">Cycle GAN PyTorch</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="model.html">Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="model.html#cyclegan"><span class="hidden-section">CycleGAN</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dataset.html">Dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#unpaireddataset"><span class="hidden-section">UnPairedDataset</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#imagepool"><span class="hidden-section">ImagePool</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Losses</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cycleloss"><span class="hidden-section">CycleLoss</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adversarialloss"><span class="hidden-section">AdversarialLoss</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#discriminatorloss"><span class="hidden-section">DiscriminatorLoss</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sampler.html">Sampler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sampler.html#unpairedrandomsampler"><span class="hidden-section">UnPairedRandomSampler</span></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html">Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utils.html#create-optimizers-cycle-gan"><span class="hidden-section">create_optimizers_cycle_gan</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/justusschock/delira_cycle_gan_pytorch">GitHub</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">delira-compatible cycle GAN PyTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../modules.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="cycle_gan.html">Cycle GAN PyTorch</a> &raquo;</li>
+        
+      <li>Losses</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/_api/_build/cycle_gan/losses.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="losses">
+<h1>Losses<a class="headerlink" href="#losses" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cycleloss">
+<h2><span class="hidden-section">CycleLoss</span><a class="headerlink" href="#cycleloss" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cycle_gan.losses.CycleLoss">
+<em class="property">class </em><code class="descname">CycleLoss</code><span class="sig-paren">(</span><em>loss_fn=&lt;sphinx.ext.autodoc.importer._MockObject object&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#CycleLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.CycleLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sphinx.ext.autodoc.importer._MockObject</span></code></p>
+<p>Computes a cyclic loss between the original and reconstructed  images of
+each domain</p>
+<dl class="method">
+<dt id="cycle_gan.losses.CycleLoss.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>target_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1c4eb8&gt;</em>, <em>target_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1c4e48&gt;</em>, <em>rec_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1c4f28&gt;</em>, <em>rec_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1c4400&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#CycleLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.CycleLoss.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the actual loss</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>target_a</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the target image of domain A</li>
+<li><strong>target_b</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the target image of domain B</li>
+<li><strong>rec_a</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the reconstructed image of domain A</li>
+<li><strong>rec_b</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the reconstructed image of domain B</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the loss value</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="adversarialloss">
+<h2><span class="hidden-section">AdversarialLoss</span><a class="headerlink" href="#adversarialloss" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cycle_gan.losses.AdversarialLoss">
+<em class="property">class </em><code class="descname">AdversarialLoss</code><span class="sig-paren">(</span><em>loss_fn=&lt;sphinx.ext.autodoc.importer._MockObject object&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#AdversarialLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.AdversarialLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sphinx.ext.autodoc.importer._MockObject</span></code></p>
+<p>Calculates an adversarial loss on the classification results of the fake
+images of both image domains (needed to update the generators)</p>
+<dl class="method">
+<dt id="cycle_gan.losses.AdversarialLoss.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>fake_a_cls: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1c4390&gt;</em>, <em>fake_b_cls: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1c4fd0&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#AdversarialLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.AdversarialLoss.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the actual loss</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fake_a_cls</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the fake image in domain A</li>
+<li><strong>fake_b_cls</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the fake image in domain B</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the loss value</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="discriminatorloss">
+<h2><span class="hidden-section">DiscriminatorLoss</span><a class="headerlink" href="#discriminatorloss" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cycle_gan.losses.DiscriminatorLoss">
+<em class="property">class </em><code class="descname">DiscriminatorLoss</code><span class="sig-paren">(</span><em>loss_fn=&lt;sphinx.ext.autodoc.importer._MockObject object&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#DiscriminatorLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.DiscriminatorLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sphinx.ext.autodoc.importer._MockObject</span></code></p>
+<p>Calculates a classical discriminator loss
+(classification whether image is real or fake)</p>
+<dl class="method">
+<dt id="cycle_gan.losses.DiscriminatorLoss.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>real_cl: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1ae208&gt;</em>, <em>fake_cl: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb37f1ae0b8&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#DiscriminatorLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.DiscriminatorLoss.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the actual loss</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>real_cl</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the real image</li>
+<li><strong>fake_cl</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the fake image</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the loss value</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.0a0+743fdbd ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sampler.html" class="btn btn-neutral float-right" title="Sampler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dataset.html" class="btn btn-neutral float-left" title="Dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Justus Schock
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
