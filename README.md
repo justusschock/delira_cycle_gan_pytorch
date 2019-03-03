@@ -1,7 +1,6 @@
 # Cycle GAN
 
-[![Build Status](https://travis-ci.com/justusschock/delira_cycle_gan_pytorch.svg?branch=master)](https://travis-ci.com/justusschock/delira_cycle_gan_pytorch) [![codecov](https://codecov.io/gh/justusschock/delira_cycle_gan_pytorch/branch/master/graph/badge.svg)](https://codecov.io/gh/justusschock/delira_cycle_gan_pytorch) ![GitHub](https://img.shields.io/github/license/justusschock/delira_cycle_gan_pytorch.svg)
-
+[![Build Status](https://travis-ci.com/justusschock/delira_cycle_gan_pytorch.svg?branch=master)](https://travis-ci.com/justusschock/delira_cycle_gan_pytorch) [![codecov](https://codecov.io/gh/justusschock/delira_cycle_gan_pytorch/branch/master/graph/badge.svg)](https://codecov.io/gh/justusschock/delira_cycle_gan_pytorch)
 This package contains a [`delira`](https://github.com/justusschock/delira) 
 compatible cycle GAN skeleton, which should work for arbitrary dimensions and
  datatypes.
