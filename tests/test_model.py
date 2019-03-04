@@ -1,5 +1,7 @@
 from cycle_gan import CycleGAN
 import torch
+from delira.utils.context_managers import \
+    DefaultOptimWrapperTorch as OptimWrapper
 
 
 class MiniGenerator(torch.nn.Module):
@@ -70,13 +72,13 @@ def test_model():
                 "target_a": torch.rand(10, 3, 64, 64),
                 "target_b": torch.rand(10, 3, 64, 64)},
         optimizers={
-            "gen": torch.optim.Adam(
+            "gen": OptimWrapper(torch.optim.Adam(
                 list(model.gen_a.parameters())
-                + list(model.gen_b.parameters())),
-            "discr_a": torch.optim.Adam(
-                model.discr_a.parameters()),
-            "discr_b": torch.optim.Adam(
+                + list(model.gen_b.parameters()))),
+            "discr_a": OptimWrapper(torch.optim.Adam(
+                model.discr_a.parameters())),
+            "discr_b": OptimWrapper(torch.optim.Adam(
                 model.discr_b.parameters()
-            )},
+            ))},
         losses={k: lambda *x: sum([_x.sum() for _x in x])
                 for k in ["cycle", "adv", "discr"]})
