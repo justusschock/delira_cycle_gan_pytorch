@@ -11,6 +11,16 @@ compatible cycle GAN skeleton, which should work for arbitrary dimensions and
  
  The paper, this package is based on, can be found at [arXiv](https://arxiv.org/abs/1703.10593).
  
+ ## Installation
+ This package can be installed from pip with:
+ ```
+ pip install delira-cycle-gan
+ ```
+ or from source via:
+ ```
+ pip install git+https://github.com/justusschock/delira_cycle_gan_pytorch
+ ```
+ 
  ## Examples (taken from [the original implementation](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix))
  <img src="https://junyanz.github.io/CycleGAN/images/teaser_high_res.jpg" width="800"/>
 
