@@ -317,7 +317,7 @@ class CycleGAN(AbstractPyTorchNetwork):
             adv_loss = losses["adv"](
                 fake_a_cl, fake_b_cl)*lambdas["adversarial"]
 
-            optim_loss = cycle_loss + adv_loss
+            gen_loss = cycle_loss + adv_loss
 
             # calculate discriminator losses
             discr_a_loss = losses["discr"](real_a_cl, fake_a_cl)
@@ -328,25 +328,28 @@ class CycleGAN(AbstractPyTorchNetwork):
             loss_vals["discr_b"] = discr_b_loss.item()
             loss_vals["adv"] = adv_loss.item()
             loss_vals["cycle"] = cycle_loss.item()
-            loss_vals["optim_total"] = optim_loss.item()
+            loss_vals["gen_total"] = gen_loss.item()
 
             if optimizers:
 
                 # optimize optimizer every lambdas["gen_freq"] iterations
                 if (batch_nr % lambdas["gen_freq"]) == 0:
-                    optimizers["gen"].zero_grad()
-                    optim_loss.backward(retain_graph=True)
-                    optimizers["gen"].step()
+                    with optimizers["gen"].scale_loss(gen_loss) as scaled_loss:
+                        optimizers["gen"].zero_grad()
+                        scaled_loss.backward(retain_graph=True)
+                        optimizers["gen"].step()
 
                 # optimize discriminator a
-                optimizers["discr_a"].zero_grad()
-                discr_a_loss.backward()
-                optimizers["discr_a"].step()
+                with optimizers["discr_a"].scale_loss(discr_a_loss) as scaled_loss:
+                    optimizers["discr_a"].zero_grad()
+                    scaled_loss.backward()
+                    optimizers["discr_a"].step()
 
                 # optimize discriminator b
-                optimizers["discr_b"].zero_grad()
-                discr_b_loss.backward()
-                optimizers["discr_b"].step()
+                with optimizers["discr_b"].scale_loss(discr_b_loss) as scaled_loss:
+                    optimizers["discr_b"].zero_grad()
+                    scaled_loss.backward()
+                    optimizers["discr_b"].step()
 
             else:
                 # eval mode if no optimizers are given -> add prefix "val_"
