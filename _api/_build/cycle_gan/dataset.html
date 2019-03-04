@@ -202,6 +202,29 @@ them.</p>
 <p class="first admonition-title">See also</p>
 <p class="last"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnPairedRandomSampler</span></code>, <a class="reference internal" href="#cycle_gan.dataset.ImagePool" title="cycle_gan.dataset.ImagePool"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagePool</span></code></a></p>
 </div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>img_path_a</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the directory path containing the data for image domain A</li>
+<li><strong>img_path_b</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the directory path containing the data for image domain B</li>
+<li><strong>pool_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the size for both image pools</li>
+<li><strong>pool_prob</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the sampling probability for both image pools</li>
+<li><strong>img_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the size of the input image</li>
+<li><strong>n_channels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – the number of image channels</li>
+<li><strong>img_extensions</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – valid file extensions for images (the default is [“.png”, “.jpg”])</li>
+<li><strong>load_fn</strong> (<em>optional</em>) – function to load a single sample (the default is
+<code class="docutils literal notranslate"><span class="pre">default_load_fn_2d</span></code>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-class docutils literal notranslate"><span class="pre">delira.data_loading.dataset.AbstractDataset</span></code></p>
+</div>
 <dl class="method">
 <dt id="cycle_gan.dataset.UnPairedDataset.get_sample_from_index">
 <code class="descname">get_sample_from_index</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/dataset.html#UnPairedDataset.get_sample_from_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.dataset.UnPairedDataset.get_sample_from_index" title="Permalink to this definition">¶</a></dt>
@@ -235,6 +258,18 @@ restarts at 0</p>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class to buffer images on CPU to avoid huge memory overload enable the model
 to revisit already seen images. This should prevent them to be forgotten</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>poolsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – the size of the image pool (the default is 50),</li>
+<li><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – the probability with which an image of the pool should be returned</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>

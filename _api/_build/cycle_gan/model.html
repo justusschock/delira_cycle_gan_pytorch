@@ -241,6 +241,36 @@ scalar output.</dd>
 </div>
 <p class="rubric">References</p>
 <p><a class="reference external" href="https://arxiv.org/abs/1703.10593">https://arxiv.org/abs/1703.10593</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>generator_cls</strong> – the class of the generator networks</li>
+<li><strong>gen_kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – keyword arguments to instantiate both generators, must contain a
+subdict “shared” which should contain all configurations, which
+apply for both domains and subdicts “domain_a” and “domain_b”
+containing the domain_specific configurations</li>
+<li><strong>discriminator_cls</strong> – the class of the discriminator networks</li>
+<li><strong>discr_kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – keyword arguments to instantiate both discriminators, must contain a
+subdict “shared” which should contain all configurations, which
+apply for both domains and subdicts “domain_a” and “domain_b”
+containing the domain_specific configurations</li>
+<li><strong>cycle_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – the weight of the cyclic loss (the default is 1)</li>
+<li><strong>adversarial_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – the weight of the adversarial loss (the default is 1)</li>
+<li><strong>gen_update_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – defines, how often the generator will be updated: a frequency of 2
+means an update every 2 iterations, a frequency of 3 means an update
+every 3 iterations etc. (the default is 1, which means an update at
+every iteration)</li>
+<li><strong>img_logging_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – defines, how often the images will be logged: a frequency of 2
+means a log every 2 iterations, a frequency of 3 means a log
+every 3 iterations etc. (the default is 1, which means a log at
+every iteration)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="staticmethod">
 <dt id="cycle_gan.model.CycleGAN.closure">
 <em class="property">static </em><code class="descname">closure</code><span class="sig-paren">(</span><em>model</em>, <em>data_dict: dict</em>, <em>optimizers: dict</em>, <em>losses={}</em>, <em>metrics={}</em>, <em>fold=0</em>, <em>batch_nr=0</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/model.html#CycleGAN.closure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.model.CycleGAN.closure" title="Permalink to this definition">¶</a></dt>
@@ -285,7 +315,7 @@ specified</p>
 
 <dl class="method">
 <dt id="cycle_gan.model.CycleGAN.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>input_domain_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b0e98208&gt;</em>, <em>input_domain_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b0e98710&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/model.html#CycleGAN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.model.CycleGAN.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_domain_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb2762158d0&gt;</em>, <em>input_domain_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb276215b70&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/model.html#CycleGAN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.model.CycleGAN.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs all relevant predictions:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
@@ -342,7 +372,7 @@ D_B(G_A(I_A))</li>
 
 <dl class="staticmethod">
 <dt id="cycle_gan.model.CycleGAN.prepare_batch">
-<em class="property">static </em><code class="descname">prepare_batch</code><span class="sig-paren">(</span><em>batch_dict: dict, input_device: Union[&lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b0e98f28&gt;, str], output_device: Union[&lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b0e983c8&gt;, str]</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/model.html#CycleGAN.prepare_batch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.model.CycleGAN.prepare_batch" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">prepare_batch</code><span class="sig-paren">(</span><em>batch_dict: dict, input_device: Union[&lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb2762150f0&gt;, str], output_device: Union[&lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb276215ac8&gt;, str]</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/model.html#CycleGAN.prepare_batch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.model.CycleGAN.prepare_batch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pushes the necessary batch inputs to the correct device</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

@@ -197,9 +197,18 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sphinx.ext.autodoc.importer._MockObject</span></code></p>
 <p>Computes a cyclic loss between the original and reconstructed  images of
 each domain</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loss_fn</strong> (<em>optional</em>) – the actual loss function to compute a pixelwise loss
+(the default is :class:<a href="#id1"><span class="problematic" id="id2">`</span></a>torch.nn.L1Loss`())</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="cycle_gan.losses.CycleLoss.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>target_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b0ee33c8&gt;</em>, <em>target_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b0ee3400&gt;</em>, <em>rec_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b0ee3278&gt;</em>, <em>rec_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b0ee3208&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#CycleLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.CycleLoss.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>target_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb27620f320&gt;</em>, <em>target_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb27620f390&gt;</em>, <em>rec_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb27620f4a8&gt;</em>, <em>rec_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb27620f5c0&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#CycleLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.CycleLoss.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the actual loss</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -234,9 +243,18 @@ each domain</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sphinx.ext.autodoc.importer._MockObject</span></code></p>
 <p>Calculates an adversarial loss on the classification results of the fake
 images of both image domains (needed to update the generators)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loss_fn</strong> (<em>optional</em>) – the actual loss function computing the losses
+(the default is :class:<a href="#id3"><span class="problematic" id="id4">`</span></a>torch.nn.BCELoss`())</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="cycle_gan.losses.AdversarialLoss.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>fake_a_cls: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b0ee3f28&gt;</em>, <em>fake_b_cls: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b0ee3438&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#AdversarialLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.AdversarialLoss.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>fake_a_cls: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb27620f630&gt;</em>, <em>fake_b_cls: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb27620f6a0&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#AdversarialLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.AdversarialLoss.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the actual loss</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -269,9 +287,18 @@ images of both image domains (needed to update the generators)</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sphinx.ext.autodoc.importer._MockObject</span></code></p>
 <p>Calculates a classical discriminator loss
 (classification whether image is real or fake)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loss_fn</strong> (<em>optional</em>) – the actual loss function computing the losses
+(the default is :class:<a href="#id5"><span class="problematic" id="id6">`</span></a>torch.nn.BCELoss`())</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="cycle_gan.losses.DiscriminatorLoss.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>real_cl: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b2468a20&gt;</em>, <em>fake_cl: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f38b24689b0&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#DiscriminatorLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.DiscriminatorLoss.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>real_cl: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb27620f7f0&gt;</em>, <em>fake_cl: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fb27620f860&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#DiscriminatorLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.DiscriminatorLoss.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the actual loss</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
