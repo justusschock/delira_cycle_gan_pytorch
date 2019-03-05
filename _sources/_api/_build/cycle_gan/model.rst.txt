@@ -10,3 +10,6 @@ Model
 ~~~~~~~~~~~~~~~~~~
 
 .. autoclass:: CycleGAN
+    :members:
+    :undoc-members:
+    :show-inheritance:
