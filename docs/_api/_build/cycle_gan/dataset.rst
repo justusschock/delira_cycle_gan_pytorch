@@ -10,8 +10,14 @@ Dataset
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. autoclass:: UnPairedDataset
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 :hidden:`ImagePool`
 ~~~~~~~~~~~~~~~~~~~
 
 .. autoclass:: ImagePool
+    :members:
+    :undoc-members:
+    :show-inheritance:
