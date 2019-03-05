@@ -10,3 +10,6 @@ Sampler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. autoclass:: UnPairedRandomSampler
+    :members:
+    :undoc-members:
+    :show-inheritance:
