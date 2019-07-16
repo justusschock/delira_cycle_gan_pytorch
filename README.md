@@ -1,4 +1,4 @@
-> This Project is now obsolete. Please refer to the implementation in [delira-dev/vision](https://github.com/delira-dev/vision) for more details
+> This Project is now obsolete and won't be continued. Potential Bugs won't be fixed in this repo anymore. Please refer to the implementation in [delira-dev/vision](https://github.com/delira-dev/vision) for more details
 
 # Cycle GAN
 
