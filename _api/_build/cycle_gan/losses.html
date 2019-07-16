@@ -208,24 +208,24 @@ each domain</p>
 </table>
 <dl class="method">
 <dt id="cycle_gan.losses.CycleLoss.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>target_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f7b13eed3c8&gt;</em>, <em>target_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f7b13eed4e0&gt;</em>, <em>rec_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f7b13eed588&gt;</em>, <em>rec_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f7b13eed630&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#CycleLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.CycleLoss.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>target_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fe1724a6828&gt;</em>, <em>target_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fe1724a6898&gt;</em>, <em>rec_a: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fe1724a69b0&gt;</em>, <em>rec_b: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fe1724a6940&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#CycleLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.CycleLoss.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the actual loss</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>target_a</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the target image of domain A</li>
-<li><strong>target_b</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the target image of domain B</li>
-<li><strong>rec_a</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the reconstructed image of domain A</li>
-<li><strong>rec_b</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the reconstructed image of domain B</li>
+<li><strong>target_a</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the target image of domain A</li>
+<li><strong>target_b</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the target image of domain B</li>
+<li><strong>rec_a</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the reconstructed image of domain A</li>
+<li><strong>rec_b</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – the reconstructed image of domain B</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the loss value</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a></p>
 </td>
 </tr>
 </tbody>
@@ -254,22 +254,22 @@ images of both image domains (needed to update the generators)</p>
 </table>
 <dl class="method">
 <dt id="cycle_gan.losses.AdversarialLoss.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>fake_a_cls: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f7b13eed860&gt;</em>, <em>fake_b_cls: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f7b13eed9b0&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#AdversarialLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.AdversarialLoss.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>fake_a_cls: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fe1724a6ac8&gt;</em>, <em>fake_b_cls: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fe1724a6c18&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#AdversarialLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.AdversarialLoss.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the actual loss</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>fake_a_cls</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the fake image in domain A</li>
-<li><strong>fake_b_cls</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the fake image in domain B</li>
+<li><strong>fake_a_cls</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the fake image in domain A</li>
+<li><strong>fake_b_cls</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the fake image in domain B</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the loss value</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a></p>
 </td>
 </tr>
 </tbody>
@@ -298,22 +298,22 @@ images of both image domains (needed to update the generators)</p>
 </table>
 <dl class="method">
 <dt id="cycle_gan.losses.DiscriminatorLoss.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>real_cl: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f7b13eedb70&gt;</em>, <em>fake_cl: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7f7b13eedbe0&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#DiscriminatorLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.DiscriminatorLoss.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>real_cl: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fe1724a6cf8&gt;</em>, <em>fake_cl: &lt;sphinx.ext.autodoc.importer._MockObject object at 0x7fe1724a6fd0&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/cycle_gan/losses.html#DiscriminatorLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cycle_gan.losses.DiscriminatorLoss.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the actual loss</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>real_cl</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the real image</li>
-<li><strong>fake_cl</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the fake image</li>
+<li><strong>real_cl</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the real image</li>
+<li><strong>fake_cl</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – classification result of the fake image</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the loss value</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.0.1.post2 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.1.0 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a></p>
 </td>
 </tr>
 </tbody>
