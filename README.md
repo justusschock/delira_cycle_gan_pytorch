@@ -1,3 +1,5 @@
+> This Project is now obsolete. Please refer to the implementation in [delira-dev/vision](https://github.com/delira-dev/vision) for more details
+
 # Cycle GAN
 
 [![Build Status](https://travis-ci.com/justusschock/delira_cycle_gan_pytorch.svg?branch=master)](https://travis-ci.com/justusschock/delira_cycle_gan_pytorch) [![codecov](https://codecov.io/gh/justusschock/delira_cycle_gan_pytorch/branch/master/graph/badge.svg)](https://codecov.io/gh/justusschock/delira_cycle_gan_pytorch)
